@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,24 +21,30 @@ namespace Linq
             ListeEspeceBuilder.FillList(listeEspecesProtegees, tigreBlanc, 100);
             ListeEspeceBuilder.FillList(listeEspecesProtegees, cougarBlanc, 3);
 
-            AffichageListe(listeEspecesProtegees);
-            Console.WriteLine("___________________________________");
-            
-            IEnumerable<Animal> listeTiigreBlanc = listeEspecesProtegees.Where((s) => s.Species.NomDeEspece == "Tigre blanc");
+            //AffichageListe(listeEspecesProtegees);
 
-            AffichageListe(listeTiigreBlanc.ToList());
-            Console.WriteLine("___________________________________");
+            Console.WriteLine($"Nombre d'espèces à protéger : {listeEspecesProtegees.Count}" );
+            Console.WriteLine("________________________________________________________");
+
+            IEnumerable<Animal> listeTiigreBlanc = listeEspecesProtegees.Where((s) => s.Species.NomDeEspece == "Tigre blanc");
+            Console.WriteLine($"Nombre de tigres blancs à protéger : {listeTiigreBlanc.ToList().Count}");
+
+            //AffichageListe(listeTiigreBlanc.ToList());
+            Console.WriteLine("________________________________________________________");
             
             IEnumerable<Animal> listeTortueAlbinos = listeEspecesProtegees.Where(s => s.Species == tortueAlbinos);
+            Console.WriteLine($"Nombre de tortues albinos à protéger : {listeTortueAlbinos.ToList().Count}");
 
-            AffichageListe(listeTortueAlbinos.ToList());
-            Console.WriteLine("___________________________________");
-            
+            //AffichageListe(listeTortueAlbinos.ToList());
+            Console.WriteLine("________________________________________________________");
+
             IEnumerable<Animal> listeCougarBlanc = from animal in listeEspecesProtegees
                                                    where animal.Species.NomDeEspece == "Cougar blanc"
                                                    select animal;
-            AffichageListe(listeCougarBlanc.ToList());
-            Console.WriteLine("___________________________________");
+            Console.WriteLine($"Nombre de cougars blancs à protéger : {listeCougarBlanc.ToList().Count}");
+
+            // AffichageListe(listeCougarBlanc.ToList());
+            Console.WriteLine("________________________________________________________");
 
 
 
